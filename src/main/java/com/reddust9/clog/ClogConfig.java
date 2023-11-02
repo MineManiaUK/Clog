@@ -12,7 +12,7 @@ import java.nio.file.Path;
 public class ClogConfig {
     private static final Logger logger = LoggerFactory.getLogger(Clog.class);
 
-    private final boolean enableLogger;
+    private boolean enableLogger;
 
     private final boolean useJsonSink;
 
@@ -55,6 +55,9 @@ public class ClogConfig {
 
     public boolean isLoggerEnabled() {
         return enableLogger;
+    }
+    public void setLoggerEnabled(boolean enabled) {
+        this.enableLogger = enabled;
     }
 
     public boolean isJsonSinkEnabled() {

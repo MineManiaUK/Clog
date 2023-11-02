@@ -4,6 +4,8 @@ import com.google.inject.Inject;
 import com.reddust9.clog.sinks.ClogJsonSink;
 import com.reddust9.clog.sinks.ClogMongoSink;
 import com.reddust9.clog.sinks.ClogSink;
+import com.velocitypowered.api.command.BrigadierCommand;
+import com.velocitypowered.api.command.CommandMeta;
 import com.velocitypowered.api.event.proxy.ProxyInitializeEvent;
 import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.plugin.Plugin;
@@ -46,6 +48,17 @@ public class Clog {
             sinks.add(new ClogMongoSink(config.getMongoSinkURI(), config.getMongoSinkDbName()));
         }
 
+        // Command disabled for now because of buggy-ness :3
+        // TODO: Fix it
+
+//        CommandMeta clogCommandMeta = server.getCommandManager()
+//                .metaBuilder("clog")
+//                .aliases("chatlog")
+//                .plugin(this)
+//                .build();
+//        BrigadierCommand clogCommand = ClogCommand.create(this);
+//        server.getCommandManager().register(clogCommandMeta, clogCommand);
+
         logger.debug("Clog initialised!");
     }
 
@@ -55,5 +68,9 @@ public class Clog {
         }
 
         sinks.forEach(s -> s.log(entry));
+    }
+
+    public ClogConfig getConfig() {
+        return this.config;
     }
 }
