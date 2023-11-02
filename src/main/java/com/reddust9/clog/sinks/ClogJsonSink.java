@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.reddust9.clog.Clog;
 import com.reddust9.clog.ClogEntry;
-import com.reddust9.clog.ClogJsonFile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -12,16 +12,26 @@ import java.nio.file.Path;
 public class ClogConfig {
     private static final Logger logger = LoggerFactory.getLogger(Clog.class);
 
-    private boolean enableLogger;
-    private boolean useJsonSink;
+    private final boolean enableLogger;
+
+    private final boolean useJsonSink;
+
+    private final boolean useMongoSink;
+    private final String mongoSinkURI;
+    private final String mongoSinkDbName;
 
     private ClogConfig() {
         this.enableLogger = true;
+
         this.useJsonSink = true;
+
+        this.useMongoSink = false;
+        this.mongoSinkURI = null;
+        this.mongoSinkDbName = null;
     }
 
     public static ClogConfig load(Path dataDir) {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Gson gson = new GsonBuilder().setPrettyPrinting().serializeNulls().create();
         Path configPath = dataDir.resolve("clog-config.json");
 
         if(!configPath.toFile().exists()) {
@@ -49,5 +59,17 @@ public class ClogConfig {
 
     public boolean isJsonSinkEnabled() {
         return useJsonSink;
+    }
+
+    public boolean isMongoSinkEnabled() {
+        return useMongoSink;
+    }
+
+    public String getMongoSinkURI() {
+        return mongoSinkURI;
+    }
+
+    public String getMongoSinkDbName() {
+        return mongoSinkDbName;
     }
 }

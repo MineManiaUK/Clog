@@ -2,6 +2,7 @@ package com.reddust9.clog;
 
 import com.google.inject.Inject;
 import com.reddust9.clog.sinks.ClogJsonSink;
+import com.reddust9.clog.sinks.ClogMongoSink;
 import com.reddust9.clog.sinks.ClogSink;
 import com.velocitypowered.api.event.proxy.ProxyInitializeEvent;
 import com.velocitypowered.api.event.Subscribe;
@@ -40,6 +41,9 @@ public class Clog {
         sinks = new ArrayList<>();
         if(config.isJsonSinkEnabled()) {
             sinks.add(new ClogJsonSink(dataDir));
+        }
+        if(config.isMongoSinkEnabled()) {
+            sinks.add(new ClogMongoSink(config.getMongoSinkURI(), config.getMongoSinkDbName()));
         }
 
         logger.debug("Clog initialised!");

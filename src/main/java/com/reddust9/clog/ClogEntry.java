@@ -1,7 +1,5 @@
 package com.reddust9.clog;
 
-// Again, IntelliJ thinks they're unused, but they need to be deserialized :3
-@SuppressWarnings({"unused", "FieldCanBeLocal"})
 public class ClogEntry {
     private final long timeStamp;
     private final String playerName;
@@ -15,5 +13,25 @@ public class ClogEntry {
         this.serverName = serverName;
         this.sourceType = sourceType;
         this.text = text;
+    }
+
+    public long getTimeStamp() {
+        return timeStamp;
+    }
+
+    public String getPlayerName() {
+        return playerName;
+    }
+
+    public String getServerName() {
+        return serverName;
+    }
+
+    public ClogSourceType getSourceType() {
+        return sourceType;
+    }
+
+    public String getText() {
+        return text;
     }
 }

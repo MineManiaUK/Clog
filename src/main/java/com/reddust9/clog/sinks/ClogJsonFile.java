@@ -1,4 +1,6 @@
-package com.reddust9.clog;
+package com.reddust9.clog.sinks;
+
+import com.reddust9.clog.ClogEntry;
 
 import java.util.ArrayList;
 
